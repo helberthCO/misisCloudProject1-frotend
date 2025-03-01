@@ -70,8 +70,8 @@ $font-style-italic: italic;
 }
 
 // Shadows
-$box-shadow-1: rgba($color-black, 0.2) 0px 8px 24px;
-$box-shadow-2: rgba($color-black, 0.2) 0px 7px 29px 0px;;
+$box-shadow-1: rgba($color-black, 0.2) 1px 1px 10px -1px;
+$box-shadow-2: rgba($color-black, 0.2) 3px 3px 8px -2px;
 
 // Spacing for margin and padding
 $space-5: 0.3125rem;   // 5px

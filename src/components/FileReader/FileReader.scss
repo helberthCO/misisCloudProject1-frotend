@@ -1,0 +1,53 @@
+@use '../../styles/_variables.scss' as vars;
+
+.file-reader {
+    &__container {
+        padding: vars.$space-30;
+        box-shadow: vars.$box-shadow-1;
+        border-radius: vars.$space-15;
+        height: 100%
+    }
+
+    &__title {
+        text-align: center;
+        font-size: vars.$font-size-20;
+    }
+
+    &__list {
+        @include vars.flex-column;
+        gap: vars.$space-20;
+        margin-top: vars.$space-20;
+    }
+
+    &__doc {
+        @include vars.flex-between;
+        align-items: center;
+        list-style-type: none;
+        border-radius: vars.$space-25;
+        padding: vars.$space-10 vars.$space-15 vars.$space-10 vars.$space-30;
+        border: 1px dashed vars.$color-gray;
+        span {
+            font-size: vars.$font-size-18;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    &__delete {
+        background-color: vars.$color-white;
+        color: vars.$color-red;
+        border: 1px solid vars.$color-red;
+        font-size: vars.$font-size-14;
+        font-size: vars.$font-size-14;
+        font-weight: 700;
+        padding: vars.$space-5 vars.$space-10;
+        margin-left: vars.$space-20;
+
+        &:hover {
+            background-color: vars.$color-red;
+            color: vars.$color-white;
+        }
+    }
+}

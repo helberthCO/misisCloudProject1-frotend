@@ -32,4 +32,30 @@
             }
         }
     }
+
+    &__logged-in {
+        @include vars.flex-column;
+        padding: vars.$space-15;
+        gap: vars.$space-15;
+        height: calc(100vh - 102px);
+
+        .file-container {
+            @include vars.flex-column;
+            gap: vars.$space-15;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .home {
+        &__logged-in {
+            @include vars.flex-row;
+
+            .chat-box__container,
+            .file-container {
+                width: 50%;
+            }
+        }
+    }
+    
 }

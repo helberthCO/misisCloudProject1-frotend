@@ -1,11 +1,20 @@
 <template>
-	<Header v-if="isLoggedIn" :name="fullName" />
-	<div v-else class="home__logged-out">
-		<Heading tag="h1" headingClass="home__logged-out__title text--primary font--bold">Bienvenido</Heading>
-		<Heading tag="h2" headingClass="home__logged-out__subtitle text--black font--regular">¿Qué deseas hacer?</Heading>
-		<RouterLink to="/login" class="home__logged-out__link font--bold">Iniciar sesión</RouterLink>
-		<RouterLink to="/register" class="home__logged-out__link font--bold">Registrarte</RouterLink>
-	</div>
+	<Header v-if="isLoggedIn" :name="userName" />
+	<main>
+		<div v-if="isLoggedIn" class="home__logged-in">
+			<div class="file-container">
+				<FileUploader />
+				<FileReader />
+			</div>
+			<ChatBox />
+		</div>
+		<div v-else class="home__logged-out">
+			<Heading tag="h1" headingClass="home__logged-out__title text--primary font--bold">Bienvenido</Heading>
+			<Heading tag="h2" headingClass="home__logged-out__subtitle text--black font--regular">¿Qué deseas hacer?</Heading>
+			<RouterLink to="/login" class="home__logged-out__link font--bold">Iniciar sesión</RouterLink>
+			<RouterLink to="/register" class="home__logged-out__link font--bold">Registrarte</RouterLink>
+		</div>
+	</main>
 </template>
 
 <script>
@@ -13,42 +22,64 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Heading from '../../components/Heading/Heading.vue'
 import Header from '../../components/Header/Header.vue'
+import FileUploader from '../../components/FileUploader/FileUploader.vue'
+import FileReader from '../../components/FileReader/FileReader.vue'
+import ChatBox from '../../components/ChatBox/ChatBox.vue'
 
 export default {
 	name: 'HomeView',
 	components: {
 		Heading,
-		Header
+		Header,
+		FileUploader,
+		FileReader,
+		ChatBox
 	},
 	setup() {
 		const isLoggedIn = ref(false)
-		let firstName = ref('')
-		let lastName = ref('')
 		const router = useRouter()
+        let userName = ref('')
+
+		const getUserName = async (token) => {	
+			try {
+				const response = await fetch('http://127.0.0.1:8080/accounts', {
+					method: 'GET',
+					headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+				})
+
+				const result = await response.json()
+
+				if (response.ok) {
+					userName.value = result.username
+				} else {
+					console.error('Error:', result.error)
+				}
+
+			} catch (error) {
+				console.error('Error:', error)
+			}
+		}
 
 		onMounted(() => {
 			const token = sessionStorage.getItem('token')
-			firstName = sessionStorage.getItem('first_name')
-			lastName = sessionStorage.getItem('last_name')
 			
 			if (token) {
 				isLoggedIn.value = true
+				getUserName(token)
 			}
 		})
 
 		const logout = () => {
 			sessionStorage.removeItem('token')
-			sessionStorage.removeItem('first_name')
-			sessionStorage.removeItem('last_name')
 			isLoggedIn.value = false
 			router.push('/login')
 		}
 
-		const fullName = computed(() => `${firstName} ${lastName}`)
-
 		return {
 			isLoggedIn,
-			fullName,
+			userName,
 			logout
 		}
 	}

@@ -3,7 +3,7 @@
       :id="id"
       :type="type"
       :disabled="disabled"
-      @click="$emit('click', $event)"
+      @click.stop="handleClick"
       :class="buttonClass"
     >
       <slot></slot>
@@ -29,6 +29,15 @@ export default {
         buttonClass: {
             type: String,
             default: ''
+        }
+    },
+    methods: {
+        handleClick(event) {
+            if (this.type !== 'submit') {
+                event.preventDefault();
+            }
+
+            this.$emit('click', event);
         }
     }
 }

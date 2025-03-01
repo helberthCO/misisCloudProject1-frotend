@@ -2,7 +2,7 @@
 
 .login {
     &__container {
-        @include vars.flex-row;
+        @include vars.flex-column;
         margin: auto;
         width: calc(100% - 3rem);
         max-width: 55rem;
@@ -41,4 +41,13 @@
             font-size: vars.$font-size-16;
         }
     }
+}
+
+@media screen and (min-width: 768px) {
+    .login {
+        &__container {
+            @include vars.flex-row;
+        }
+    }
+    
 }

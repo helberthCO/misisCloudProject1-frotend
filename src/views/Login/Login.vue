@@ -6,30 +6,27 @@
                 id="username" 
                 label="Nombre de usuario" 
                 v-model="username" 
-                :class="{ 'error': userNotFound }" 
+                :class="{ 'error': invalidUser }" 
                 placeholder="Ingresa tu nombre de usuario"
 				required
             />
-			<p v-if="userNotFound" class="error">{{ userNotFoundMessage }}</p>
+			<p v-if="invalidUser" class="error">{{ invalidUserMessage }}</p>
             <Input 
                 id="password" 
                 type="password" 
                 label="Contraseña" 
                 v-model="password" 
-                :class="{ 'error': invalidPassword }" 
+                :class="{ 'error': invalidUser }" 
                 placeholder="Ingresa tu contraseña"
 				required
             />
-			<p v-if="invalidPassword" class="error">{{ invalidPasswordMessage }}</p>
+			<p v-if="invalidUser" class="error">{{ invalidUserMessage }}</p>
 			<Button type="submit">Ingresar</Button>
 		</form>
 		<div class="login__register" v-if="!loginSuccess">
 			<Heading tag="h2" headingClass="title text--white font--bold">Bienvenido!</Heading>
 			<Heading tag="h3" headingClass="subtitle text--white font--regular">¿No tienes una cuenta?</Heading>
 			<RouterLink to="/register" class="text--white">Registrate aquí</RouterLink>
-		</div>
-		<div v-else class="login__success">
-			<Heading tag="h2" headingClass="text--primary font--bold">{{ loginMessage }}</Heading>
 		</div>
 	</div>
 </template>
@@ -54,50 +51,34 @@ export default {
 			username: '',
 			password: '',
 			loginSuccess: false,
-			userNotFound: false,
-			invalidPassword: false,
-			loginMessage: '',
-			userNotFoundMessage: '',
-			invalidPasswordMessage: ''
+			invalidUser: false,
+			invalidUserMessage: ''
 		}
 	},
 	methods: {
 		async handleClick(event) {
 			event.preventDefault();
 
-			const loginData = {
-				username: this.username,
-				password: this.password
-			}
+			const loginData = new FormData();
+			loginData.append('username', this.username);
+			loginData.append('password', this.password);
 
 			try {
-				const response = await fetch('http://localhost:8000/login', {
+				const response = await fetch('http://localhost:8080/accounts/login', {
 					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(loginData)
+					body: loginData
 				})
 
 				const result = await response.json()
 				
 				if (response.ok) {
-					this.loginMessage = result.message
 					this.loginSuccess = true
-					console.log(response);
 					
-					sessionStorage.setItem('first_name', result.name)
-					sessionStorage.setItem('last_name', result.last_name)
-					sessionStorage.setItem('token', result.access_token)
+					sessionStorage.setItem('token', result.token)
 					this.$router.push('/')
-				} else if (response.status === 404) {
-					this.userNotFoundMessage = result.detail
-					this.userNotFound = true
-				} else if (response.status === 400) {
-					this.invalidPasswordMessage = result.detail
-					this.invalidPassword = true
 				} else {
-					console.error('Error:', result.message)
+					this.invalidUser = true
+					this.invalidUserMessage = result.error
 				}
 			} catch (error) {
 				console.error('Error:', error)

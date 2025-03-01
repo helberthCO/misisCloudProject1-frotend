@@ -1,0 +1,7 @@
+@use '../../styles/_variables.scss' as vars;
+
+.chat-box__container {
+    padding: vars.$space-30;
+    box-shadow: vars.$box-shadow-1;
+    border-radius: vars.$space-15;
+}

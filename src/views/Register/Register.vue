@@ -9,6 +9,9 @@
 				placeholder="Ingresa tu contraseña" minlength="8" required />
 			<Button type="submit">Registrarse</Button>
 		</form>
+		<div class="register__fail" v-if="registrationFail">
+			<Heading tag="h5" headingClass="subtitle text--red font--regular">Este usuario o correo ya han sido registrados, por favor intenta nuevamente.</Heading>
+		</div>
 		<div class="register__login" v-if="!registrationSuccess">
 			<Heading tag="h3" headingClass="subtitle text--primary font--regular">¿Ya tienes una cuenta?</Heading>
 			<RouterLink to="/login">Inicia sesión aquí</RouterLink>
@@ -40,6 +43,7 @@ export default {
 			email: '',
 			password: '',
 			registrationSuccess: false,
+			registrationFail: false,
 			successMessage: ''
 		}
 	},
@@ -69,7 +73,7 @@ export default {
 				this.successMessage = "¡Registro exitoso!";
 				this.registrationSuccess = true;
 			} catch (error) {
-				console.error('Error:', error);
+				this.registrationFail = true;
 			}
 		}
 	}

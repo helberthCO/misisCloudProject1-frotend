@@ -1,0 +1,57 @@
+@use '../../styles/_variables.scss' as vars;
+
+.file-uploader {
+    &__container {
+        padding: vars.$space-30;
+        box-shadow: vars.$box-shadow-1;
+        border-radius: vars.$space-15;
+    
+        .drop-zone {
+            padding: vars.$space-20 vars.$space-50;
+            border-radius: vars.$space-15;
+            border: 1px dashed vars.$color-gray;
+            text-align: center;
+            margin-top: vars.$space-20;
+        
+            &.dragging {
+                opacity: 0.35;
+            }
+
+            .input-wrapper {
+                display: none;
+            }
+
+            .trigger-file-button {
+                margin-top: vars.$space-20;
+                font-weight: 600;
+                font-size: vars.$font-size-16;
+            }
+
+            .file-name {
+                margin-top: vars.$space-20;
+                font-weight: 800;
+                font-size: vars.$font-size-16;
+            }
+        }
+
+        .upload-file-button {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+            margin: auto;
+            margin-top: vars.$space-20;
+            font-weight: 600;
+            font-size: vars.$font-size-16;
+
+            &[disabled] {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &__title {
+        text-align: center;
+        font-size: vars.$font-size-20;
+    }
+}

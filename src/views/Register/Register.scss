@@ -3,9 +3,9 @@
 .register {
     &__container {
         @include vars.flex-column;
-        padding: 4rem 3rem;
+        padding: 4rem 2rem;
         margin: auto;
-        width: calc(100% - 3rem);
+        width: calc(100% - 6rem);
         max-width: 30rem;
         box-shadow: vars.$box-shadow-2;
         gap: vars.$space-30;
