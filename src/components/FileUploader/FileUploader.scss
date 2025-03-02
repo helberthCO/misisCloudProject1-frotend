@@ -25,6 +25,7 @@
                 margin-top: vars.$space-20;
                 font-weight: 600;
                 font-size: vars.$font-size-16;
+                background-color: vars.$color-black;
             }
 
             .file-name {
@@ -42,6 +43,7 @@
             margin-top: vars.$space-20;
             font-weight: 600;
             font-size: vars.$font-size-16;
+            background-color: vars.$color-secondary;
 
             &[disabled] {
                 opacity: 0.5;
@@ -53,5 +55,6 @@
     &__title {
         text-align: center;
         font-size: vars.$font-size-20;
+        color: vars.$color-black;
     }
 }

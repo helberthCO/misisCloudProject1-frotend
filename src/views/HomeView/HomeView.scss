@@ -37,7 +37,6 @@
         @include vars.flex-column;
         padding: vars.$space-15;
         gap: vars.$space-15;
-        height: calc(100vh - 102px);
 
         .file-container {
             @include vars.flex-column;
@@ -50,6 +49,7 @@
     .home {
         &__logged-in {
             @include vars.flex-row;
+            height: calc(100vh - 102px);
 
             .chat-box__container,
             .file-container {

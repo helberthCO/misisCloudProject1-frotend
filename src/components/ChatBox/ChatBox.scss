@@ -1,7 +1,62 @@
 @use '../../styles/_variables.scss' as vars;
 
-.chat-box__container {
-    padding: vars.$space-30;
-    box-shadow: vars.$box-shadow-1;
-    border-radius: vars.$space-15;
+.chat-box {
+    &__container {
+        padding: vars.$space-30;
+        box-shadow: vars.$box-shadow-1;
+        border-radius: vars.$space-15;
+        overflow: scroll;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: vars.$font-size-20;
+        color: vars.$color-black;
+    }
+
+    &__no-chats {
+        text-align: center;
+        font-weight: 600;
+        margin-top: vars.$space-20;
+    }
+
+    &__chats,
+    &__chat {
+        @include vars.flex-column;
+    }
+    
+    &__chats {
+        gap: vars.$space-30;
+        margin-top: vars.$space-20;
+    }
+
+    &__chat {
+        gap: vars.$space-10;
+    }
+
+    &__delete {
+        background-color: vars.$color-white;
+        color: vars.$color-red;
+        border: 1px solid vars.$color-red;
+        font-size: vars.$font-size-14;
+        font-size: vars.$font-size-14;
+        font-weight: 700;
+        padding: vars.$space-5 vars.$space-10;
+        margin-left: auto;
+
+        &:hover {
+            background-color: vars.$color-red;
+            color: vars.$color-white;
+        }
+    }
+    &__new-chat {
+        @include vars.flex-column;
+        align-items: center;
+        margin-top: vars.$space-20;
+        
+        button {
+            font-size: vars.$font-size-16;
+            font-weight: 600;
+        }
+    }
 }

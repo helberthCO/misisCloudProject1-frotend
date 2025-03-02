@@ -6,7 +6,7 @@
 				<FileUploader />
 				<FileReader />
 			</div>
-			<ChatBox />
+            <ChatBox />
 		</div>
 		<div v-else class="home__logged-out">
 			<Heading tag="h1" headingClass="home__logged-out__title text--primary font--bold">Bienvenido</Heading>
