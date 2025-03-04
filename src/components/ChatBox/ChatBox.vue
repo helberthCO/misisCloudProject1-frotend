@@ -4,7 +4,7 @@
         <p v-if="chats.length === 0" class="chat-box__no-chats">No hay chats disponibles</p>
         <div v-else class="chat-box__chats">
             <div class="chat-box__chat" v-for="chat in chats" :key="chat.id" :style="{order: chat.id}">
-                <messagesHandler :chatId="chat.id" :messages="chat.messages" @message-sent="fetchChats" />
+                <messagesHandler :chatId="chat.id" :messages="chat.messages" :sender="chat.sender" @message-sent="fetchChats" />
                 <Button class="chat-box__delete" @click.once="deleteChat(chat.id)">Eliminar Chat</Button>
             </div>
         </div>
@@ -58,6 +58,8 @@ export default {
                         if (chatResponse.ok) {
                             const chatData =  await chatResponse.json();
                             chat.messages = chatData.messages;
+                            console.log(chatData);
+                            
                             return chat;
                         }
                     }));

@@ -6,7 +6,9 @@
 
     input {
         padding: vars.$space-15 vars.$space-20;
-        background-color: rgba(vars.$color-gray, 0.125);
+        // background-color: rgba(vars.$color-gray, 0.125);
+        background-color: vars.$color-white;
+        border: 1px solid vars.$color-black;
         border-radius: vars.$space-25;
         color: vars.$color-black;
 
@@ -15,7 +17,14 @@
             font-size: vars.$font-size-14;
         }
 
-        &::placeholder { color: rgba(vars.$color-gray, 0.5); }
+        &::placeholder { color: vars.$color-gray; }
+
+        &:disabled {
+            background-color: rgba(vars.$color-gray, 0.125);
+            border: none;
+
+            &::placeholder { color: rgba(vars.$color-gray, 0.5) }
+        }
     }
     
     label {

@@ -16,4 +16,9 @@ button {
         transition: background-color 0.3s;
         background-color: vars.$color-secondary;
     }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 }

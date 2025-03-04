@@ -5,7 +5,7 @@
         padding: vars.$space-30;
         box-shadow: vars.$box-shadow-1;
         border-radius: vars.$space-15;
-        overflow: scroll;
+        overflow-y: auto;
     }
 
     &__title {
@@ -24,7 +24,7 @@
     &__chat {
         @include vars.flex-column;
     }
-    
+
     &__chats {
         gap: vars.$space-30;
         margin-top: vars.$space-20;
@@ -49,6 +49,7 @@
             color: vars.$color-white;
         }
     }
+
     &__new-chat {
         @include vars.flex-column;
         align-items: center;

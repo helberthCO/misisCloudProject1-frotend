@@ -17,11 +17,65 @@
     &__message {
         display: block;
         width: fit-content;
-        margin-left: auto;
         padding: vars.$space-10 vars.$space-20;
         border-radius: vars.$space-20;
-        background: rgba(vars.$color-secondary, 0.2);
-        margin-bottom: vars.$space-5;
+        background-color: vars.$color-white;
+        border: 1px solid vars.$color-primary;
+        margin-bottom: vars.$space-15;
+        max-width: 70%;
+
+        &--user {
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+
+        &--assistant {
+            margin-right: auto;
+            border-top-left-radius: 0;
+            background-color: vars.$color-primary;
+            border: none;
+            color: vars.$color-white;
+        }
+
+        &--sending {
+            color: transparent;
+            position: relative;
+            width: vars.$space-35;
+            
+            .dots,
+            .dots::before,
+            .dots::after {
+                content: '';
+                position: absolute;
+                display: block;
+                margin: auto;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 6px;
+                height: 6px;
+                border-radius: 10px;
+                background-color: vars.$color-white;
+            }
+
+            .dots {
+                animation: dot-pulse 1.5s infinite linear;
+                animation-delay: 0.25s;
+    
+                &::before {
+                    animation: dot-pulse 1.5s infinite linear;
+                    animation-delay: 0s;
+                    margin-right: 10px;
+                }
+    
+                &::after {
+                    animation: dot-pulse 1.5s infinite linear;
+                    animation-delay: 0.5s;
+                    margin-left: 10px;
+                }
+            }
+        }
     }
 
     &__input {
@@ -34,7 +88,8 @@
         height: vars.$space-45;
         color: transparent;
 
-        &::after, &::before {
+        &::after,
+        &::before {
             position: absolute;
             content: '';
             top: 0;
@@ -59,4 +114,13 @@
             height: 3px;
         }
     }
+}
+
+@keyframes dot-pulse {
+    0% { opacity: 1; }
+
+    30% { opacity: 0.3; }
+
+    60%,
+    100% { opacity: 1; }
 }

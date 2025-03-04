@@ -9,6 +9,7 @@
 			:required="required"
 			:minlength="minlength"
 			:accept="accept"
+			:disabled="notResponded"
 			@input="onInput"
 			@change="onChange"
 			ref="input"
@@ -51,7 +52,11 @@ export default {
 		accept: {
 			type: String,
 			default: ''
-		}
+		},
+        notResponded: {
+            type: Boolean,
+            default: false
+        }
 	},
 	methods: {
 		onInput(event) {
