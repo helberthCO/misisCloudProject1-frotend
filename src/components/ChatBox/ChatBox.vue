@@ -57,9 +57,7 @@ export default {
                         });
                         if (chatResponse.ok) {
                             const chatData =  await chatResponse.json();
-                            chat.messages = chatData.messages;
-                            console.log(chatData);
-                            
+                            chat.messages = chatData.messages;                            
                             return chat;
                         }
                     }));
