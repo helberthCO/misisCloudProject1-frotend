@@ -80,7 +80,7 @@ export default {
                 clearInterval(this.checkUnreadMessagesInterval);
             }
 
-            this.checkUnreadMessagesInterval = setInterval(this.checkUnreadMessages, 300);
+            this.checkUnreadMessagesInterval = setInterval(this.checkUnreadMessages, 1000);
         },
         async checkUnreadMessages() {
             const token = sessionStorage.getItem("token");
@@ -96,12 +96,12 @@ export default {
                 if (response.ok) {
                     const data = await response.json();
                     if (data.unread) {
-                        this.notResponded = true;
-                        this.markAsRead();
-                        this.$emit('message-sent');
-                    } else {
                         this.notResponded = false;
+                        this.$emit('message-sent');
+                        this.markAsRead();
                         clearInterval(this.checkUnreadMessagesInterval);
+                    } else {
+                        this.notResponded = true;
                     }
                 }
             } catch (error) {
