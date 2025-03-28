@@ -15,7 +15,7 @@
 					ref="fileInput" 
 					@change="onFileChange" 
 					:placeholder="filePlaceholder"
-					accept=".pdf, .txt, .docx, .md"
+					accept=".pdf, .txt, .docx, .md, .doc"
 				/>
                 <Button type="button" class="trigger-file-button" @click="triggerFileInput">Selecciona un archivo</Button>
 				<p :class="{'file-name': true, 'file-name text--primary': fileUploaded}">{{ filePlaceholder }}</p>
