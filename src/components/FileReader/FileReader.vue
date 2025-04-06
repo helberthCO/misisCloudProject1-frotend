@@ -14,6 +14,7 @@
 import Button from '../Button/Button.vue';
 import Heading from '../Heading/Heading.vue';
 import { EventBus } from '../../eventBus';
+import {backendUrl} from "@/config";
 
 export default {
     name: 'FileReader',
@@ -38,7 +39,7 @@ export default {
             const token = sessionStorage.getItem("token");
 
             try {
-                const response = await fetch("http://127.0.0.1:8080/accounts/documents", {
+                const response = await fetch(`${backendUrl}/accounts/documents`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`
@@ -59,7 +60,7 @@ export default {
             const token = sessionStorage.getItem("token");
 
             try {
-                const response = await fetch(`http://127.0.0.1:8080/documents/${documentId}`, {
+                const response = await fetch(`${backendUrl}/documents/${documentId}`, {
                     method: "DELETE",
                     headers: {
                         "Authorization": `Bearer ${token}`,

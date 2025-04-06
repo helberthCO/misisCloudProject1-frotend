@@ -55,7 +55,7 @@ export default {
             this.notResponded = true;
 
             try {
-                const response = await fetch(`http://127.0.0.1:8080/chats/${this.chatId}/messages`, {
+                const response = await fetch(`${backendUrl}/chats/${this.chatId}/messages`, {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -86,7 +86,7 @@ export default {
             const token = sessionStorage.getItem("token");
 
             try {
-                const response = await fetch(`http://127.0.0.1:8080/chats/${this.chatId}/unread`, {
+                const response = await fetch(`${backendUrl}/chats/${this.chatId}/unread`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`
@@ -112,7 +112,7 @@ export default {
             const token = sessionStorage.getItem("token");
 
             try {
-                const response = await fetch(`http://127.0.0.1:8080/chats/${this.chatId}/mark-as-read`, {
+                const response = await fetch(`${backendUrl}/chats/${this.chatId}/mark-as-read`, {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${token}`

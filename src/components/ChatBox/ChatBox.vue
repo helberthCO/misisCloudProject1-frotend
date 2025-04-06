@@ -18,6 +18,7 @@
 import Heading from '../Heading/Heading.vue';
 import Button from '../Button/Button.vue';
 import messagesHandler from '../messagesHandler/messagesHandler.vue';
+import {backendUrl} from "@/config";
 
 export default {
     name: 'ChatBox',
@@ -39,7 +40,7 @@ export default {
             const token = sessionStorage.getItem("token");
 
             try {
-                const response = await fetch("http://127.0.0.1:8080/accounts/chats", {
+                const response = await fetch(`${backendUrl}/accounts/chats`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`
@@ -49,7 +50,7 @@ export default {
                 if (response.ok) {
                     const data = await response.json();
                     const chatsDetails = await Promise.all(data.map(async chat => {
-                        const chatResponse = await fetch(`http://127.0.0.1:8080/chats/${chat.id}`, {
+                        const chatResponse = await fetch(`${backendUrl}/chats/${chat.id}`, {
                             method: "GET",
                             headers: {
                                 "Authorization": `Bearer ${token}`
@@ -71,7 +72,7 @@ export default {
             const token = sessionStorage.getItem("token");
 
             try {
-                const response = await fetch("http://127.0.0.1:8080/chats", {
+                const response = await fetch(`${backendUrl}/chats`, {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -92,7 +93,7 @@ export default {
             const token = sessionStorage.getItem("token");
 
             try {
-                const response = await fetch(`http://127.0.0.1:8080/chats/${chatId}`, {
+                const response = await fetch(`${backendUrl}/chats/${chatId}`, {
                     method: "DELETE",
                     headers: {
                         "Authorization": `Bearer ${token}`

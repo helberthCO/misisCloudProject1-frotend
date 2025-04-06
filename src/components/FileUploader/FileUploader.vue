@@ -104,7 +104,7 @@ export default {
             formData.append("file", this.selectedFile, fileName);
 
 			try {
-				const response = await fetch("http://127.0.0.1:8080/documents", {
+				const response = await fetch(`${backendUrl}/documents`, {
 					method: "POST",
 					headers: {
 						"Authorization": `Bearer ${token}`
@@ -127,7 +127,7 @@ export default {
 		},
         async fetchExistingFiles(token) {
             try {
-                const response = await fetch("http://127.0.0.1:8080/accounts/documents", {
+                const response = await fetch(`${backendUrl}/accounts/documents`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`

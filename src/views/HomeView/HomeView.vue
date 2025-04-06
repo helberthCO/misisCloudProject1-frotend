@@ -25,6 +25,7 @@ import Header from '../../components/Header/Header.vue'
 import FileUploader from '../../components/FileUploader/FileUploader.vue'
 import FileReader from '../../components/FileReader/FileReader.vue'
 import ChatBox from '../../components/ChatBox/ChatBox.vue'
+import { backendUrl } from '../../config'
 
 export default {
 	name: 'HomeView',
@@ -42,7 +43,7 @@ export default {
 
 		const getUserName = async (token) => {	
 			try {
-				const response = await fetch('http://127.0.0.1:8080/accounts', {
+				const response = await fetch(`${backendUrl}/accounts`, {
 					method: 'GET',
 					headers: {
                         'Authorization': `Bearer ${token}`

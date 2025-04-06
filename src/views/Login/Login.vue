@@ -64,7 +64,7 @@ export default {
 			loginData.append('password', this.password);
 
 			try {
-				const response = await fetch('http://localhost:8080/accounts/login', {
+				const response = await fetch(`${backendUrl}/accounts/login`, {
 					method: 'POST',
 					body: loginData
 				})
