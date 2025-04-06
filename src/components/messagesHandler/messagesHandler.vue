@@ -16,6 +16,7 @@
 <script>
 import Input from '../Input/Input.vue';
 import Button from '../Button/Button.vue';
+import {backendUrl} from "@/config";
 
 export default {
     name: 'messagesHandler',

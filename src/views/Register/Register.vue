@@ -28,6 +28,7 @@ import Heading from '../../components/Heading/Heading.vue'
 import Input from '../../components/Input/Input.vue'
 import Button from '../../components/Button/Button.vue'
 import Link from '../../components/Link/Link.vue'
+import {backendUrl} from "@/config";
 
 export default {
 	name: 'Register',

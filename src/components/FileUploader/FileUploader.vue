@@ -31,6 +31,7 @@ import Input from '../Input/Input.vue';
 import Heading from '../Heading/Heading.vue';
 import { debounce } from 'lodash';
 import { EventBus } from '../../eventBus';
+import {backendUrl} from "@/config";
 
 export default {
 	name: 'FileUploader',
