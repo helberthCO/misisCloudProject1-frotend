@@ -1,7 +1,8 @@
 @use '../../styles/_variables.scss' as vars;
 
 main:has(.home__logged-out) {
-    margin: auto
+    margin: auto;
+    display: flex;
 }
 
 .home {
