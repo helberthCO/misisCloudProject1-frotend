@@ -5,18 +5,18 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "start": "vue-cli-service build && vue-cli-service serve",
+        "start": "vue-cli-service serve --port 80 --host 0.0.0.0",
         "dev": "concurrently \"npm run build\" \"npm run serve\""
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "^5.0.8",
         "@vue/cli-service": "^5.0.8",
+        "@vue/compiler-sfc": "^3.5.13",
         "concurrently": "^9.1.2",
         "sass": "^1.83.4",
         "sass-loader": "^16.0.4",
         "vue": "^3.5.13",
-        "vue-router": "^4.5.0",
-        "vue-template-compiler": "^2.6.14"
+        "vue-router": "^4.5.0"
     },
     "dependencies": {
         "loadash": "^1.0.0",
