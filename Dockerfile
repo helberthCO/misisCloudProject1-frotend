@@ -1,10 +1,14 @@
 FROM node:20.18.1 as build
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm install
+
 COPY . .
 
-# Set the HOST environment variable
+# Configure for port 80
 ENV HOST=0.0.0.0
+EXPOSE 80
 
+USER root
 CMD ["npm", "run", "start"]

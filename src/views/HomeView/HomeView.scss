@@ -1,5 +1,9 @@
 @use '../../styles/_variables.scss' as vars;
 
+main:has(.home__logged-out) {
+    margin: auto
+}
+
 .home {
     &__logged-out {
         @include vars.flex-column;
