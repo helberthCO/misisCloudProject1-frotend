@@ -2,7 +2,7 @@ FROM node:20.18.1 as build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm cache clean --force && npm install && npm install -g @vue/cli @vue/cli-service
+RUN npm cache clean --force && npm install && npm install -g @vue/cli @vue/cli-service @vue/cli-plugin-babel
 
 COPY . .
 
