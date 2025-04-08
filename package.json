@@ -6,20 +6,26 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "start": "vue-cli-service serve --port 80 --host 0.0.0.0",
-        "dev": "concurrently \"npm run build\" \"npm run serve\""
+        "prod": "npm run build && nginx -g 'daemon off;'"
     },
     "devDependencies": {
+        "@babel/eslint-parser": "^7.23.10",
         "@vue/cli-plugin-babel": "^5.0.8",
+        "@vue/cli-plugin-eslint": "^5.0.8",
         "@vue/cli-service": "^5.0.8",
         "@vue/compiler-sfc": "^3.5.13",
+        "babel-eslint": "^10.1.0",
         "concurrently": "^9.1.2",
+        "eslint": "^8.0.0",
+        "eslint-plugin-vue": "^9.23.0",
         "sass": "^1.83.4",
         "sass-loader": "^16.0.4",
         "vue": "^3.5.13",
+        "vue-loader": "^17.0.0",
         "vue-router": "^4.5.0"
     },
     "dependencies": {
-        "loadash": "^1.0.0",
+        "lodash": "^4.17.21",
         "mitt": "^3.0.1"
     }
 }

@@ -2,13 +2,16 @@ FROM node:20.18.1 as build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm cache clean --force && npm install && npm install -g @vue/cli @vue/cli-service @vue/cli-plugin-babel
+RUN npm install
 
+# Copy source code
 COPY . .
 
-# Configure for port 80
-ENV HOST=0.0.0.0
-EXPOSE 80
+# Build for production
+RUN npm run build
 
-USER root
-CMD ["npm", "run", "start"]
+# Production stage with nginx
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
