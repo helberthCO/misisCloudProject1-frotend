@@ -18,9 +18,5 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Create directory for certificates
 RUN mkdir -p /etc/nginx/ssl/
 
-# Copy SSL certificates
-COPY ./certs/cert.pem /etc/nginx/ssl/
-COPY ./certs/private.key /etc/nginx/ssl/
-
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
