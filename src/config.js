@@ -1,4 +1,4 @@
-export const backendUrl = process.env.BACKEND_URL || 'https://cloud-solutions-api-320712286358.us-central1.run.app';
+export const backendUrl = process.env.BACKEND_URL || 'http://34.120.90.189';
 console.log(`Backend URL: ${backendUrl}`);
 
 export default {
