@@ -1,4 +1,4 @@
-export const backendUrl = process.env.BACKEND_URL || 'http://34.120.90.189';
+export const backendUrl = process.env.BACKEND_URL || 'https://34-120-90-189-1.sslip.io/';
 console.log(`Backend URL: ${backendUrl}`);
 
 export default {
